@@ -4,9 +4,9 @@ sed -i "s,LISTEN_PORT,$PORT,g" /etc/nginx/nginx.conf
 
 php-fpm -D
 
-# php artisan migrate
+php artisan migrate
 
-# php artisan passport:install
+php artisan passport:install
 
 php artisan passport:keys
 

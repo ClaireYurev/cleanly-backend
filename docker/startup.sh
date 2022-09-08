@@ -6,14 +6,33 @@ php-fpm -D
 
 #while ! nc -w 1 -z 127.0.0.1 9000; do sleep 0.1; done;
 
-nginx
+composer install
 
-composer require laravel/passport
+php artisan key:generate 
+
+php artisan cache:clear
 
 php artisan migrate
 
-php artisan passport:install
+chmod -R 775 storage/
+
+composer dump-autoload
+
+sudo chown -R apache storage
+
+sudo chown -R apache bootstrap/cache
+
+chmod -R 775 storage
+
+chmod -R 775 bootstrap/cache
 
 php artisan config:clear
+php artisan cache:clear
+php artisan optimize
 
-php artisan passport:keys
+#composer require laravel/passport
+
+#php artisan passport:install
+#php artisan passport:keys
+
+nginx

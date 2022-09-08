@@ -1,6 +1,6 @@
 FROM php:8.1-fpm-alpine as php
 
-RUN apt-get update -y
+#RUN apt-get update -y
 
 RUN apk add --no-cache nginx wget
 

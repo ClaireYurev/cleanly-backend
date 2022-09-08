@@ -1,4 +1,6 @@
-FROM php:8.1-fpm-alpine
+FROM php:8.1-fpm-alpine as php
+
+RUN apt-get update -y
 
 RUN apk add --no-cache nginx wget
 
@@ -17,28 +19,14 @@ RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar 
 RUN cd /app && \
     /usr/local/bin/composer install --no-dev
 
-RUN chown -R www-data: /app
+RUN sudo chown -R www-data: /app
 
-RUN composer install
-
-RUN php artisan key:generate 
-
-RUN php artisan cache:clear
-
-RUN php artisan migrate
-
-RUN composer dump-autoload
-
-RUN sudo chown -R nginx:nginx storage
+# RUN sudo chown -R nginx:nginx storage
 
 RUN sudo chown -R nginx:nginx bootstrap/cache
 
 RUN chmod -R 775 storage
 
 RUN chmod -R 775 bootstrap/cache
-
-RUN php artisan config:clear
-RUN php artisan cache:clear
-RUN php artisan optimize
 
 CMD sh /app/docker/startup.sh

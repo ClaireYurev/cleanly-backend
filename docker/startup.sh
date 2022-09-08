@@ -6,15 +6,23 @@ php-fpm -D
 
 #while ! nc -w 1 -z 127.0.0.1 9000; do sleep 0.1; done;
 
-# composer install
+
 
 # errored out: chmod -R 775 storage/
 
 
 
-#composer require laravel/passport
 
-#php artisan passport:install
-#php artisan passport:keys
+composer install
+composer require laravel/passport
+
+php artisan migrate
+php artisan key:generate
+php artisan cache:clear
+php artisan config:clear
+composer dump-autoload
+php artisan optimize
+php artisan passport:install
+php artisan passport:keys
 
 nginx

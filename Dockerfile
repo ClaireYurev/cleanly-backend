@@ -19,11 +19,11 @@ RUN sh -c "wget http://getcomposer.org/composer.phar && chmod a+x composer.phar 
 RUN cd /app && \
     /usr/local/bin/composer install --no-dev
 
-RUN sudo chown -R www-data: /app
+RUN chown -R www-data: /app
 
-# RUN sudo chown -R nginx:nginx storage
+RUN chown -R nginx:nginx storage
 
-RUN sudo chown -R nginx:nginx bootstrap/cache
+RUN chown -R nginx:nginx bootstrap/cache
 
 RUN chmod -R 775 storage
 

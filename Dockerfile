@@ -19,4 +19,6 @@ RUN cd /app && \
 
 RUN chown -R www-data: /app
 
+RUN composer update
+
 CMD sh /app/docker/startup.sh

@@ -23,7 +23,7 @@ RUN chown -R www-data: /app
 
 #RUN chown -R nginx:nginx storage
 
-RUN chown -R nginx:nginx bootstrap/cache
+#RUN chown -R nginx:nginx bootstrap/cache
 
 RUN chmod -R 775 storage
 

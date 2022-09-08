@@ -19,4 +19,24 @@ RUN cd /app && \
 
 RUN chown -R www-data: /app
 
+RUN php artisan key:generate 
+
+RUN php artisan cache:clear
+
+RUN php artisan migrate
+
+RUN composer dump-autoload
+
+RUN sudo chown -R apache storage
+
+RUN sudo chown -R apache bootstrap/cache
+
+RUN chmod -R 775 storage
+
+RUN chmod -R 775 bootstrap/cache
+
+RUN php artisan config:clear
+RUN php artisan cache:clear
+RUN php artisan optimize
+
 CMD sh /app/docker/startup.sh

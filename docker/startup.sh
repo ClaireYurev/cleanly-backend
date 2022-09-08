@@ -14,7 +14,7 @@ php artisan cache:clear
 
 php artisan migrate
 
-chmod -R 775 storage/
+# errored out: chmod -R 775 storage/
 
 composer dump-autoload
 

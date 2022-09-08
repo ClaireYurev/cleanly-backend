@@ -19,6 +19,8 @@ RUN cd /app && \
 
 RUN chown -R www-data: /app
 
+RUN composer install
+
 RUN php artisan key:generate 
 
 RUN php artisan cache:clear
@@ -27,9 +29,9 @@ RUN php artisan migrate
 
 RUN composer dump-autoload
 
-RUN sudo chown -R apache storage
+RUN sudo chown -R nginx:nginx storage
 
-RUN sudo chown -R apache bootstrap/cache
+RUN sudo chown -R nginx:nginx bootstrap/cache
 
 RUN chmod -R 775 storage
 

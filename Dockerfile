@@ -1,8 +1,8 @@
-FROM php:8.1-fpm-alpine as php
-
-#RUN apt-get update -y
+FROM php:8.1-fpm-alpine
 
 RUN apk add --no-cache nginx wget
+
+RUN apk update && apk upgrade --no-cache
 
 RUN mkdir -p /run/nginx
 
@@ -10,7 +10,7 @@ COPY docker/nginx.conf /etc/nginx/nginx.conf
 
 # Install extensions
 RUN docker-php-ext-install pdo pdo_mysql
-RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+#RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 RUN mkdir -p /app
 COPY . /app

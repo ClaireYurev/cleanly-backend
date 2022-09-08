@@ -25,8 +25,8 @@ RUN chown -R www-data: /app
 
 #RUN chown -R nginx:nginx bootstrap/cache
 
-RUN chmod -R 775 storage
+#RUN chmod -R 775 storage
 
-RUN chmod -R 775 bootstrap/cache
+#RUN chmod -R 775 bootstrap/cache
 
 CMD sh /app/docker/startup.sh

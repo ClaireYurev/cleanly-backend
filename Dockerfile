@@ -19,11 +19,4 @@ RUN cd /app && \
 
 RUN chown -R www-data: /app
 
-# New
-RUN chmod -R 775 storage/
-RUN chmod -R 775 bootstrap/cache
-
-RUN chown -R nginx storage/
-RUN chown -R nginx bootstrap/cache
-
 CMD sh /app/docker/startup.sh

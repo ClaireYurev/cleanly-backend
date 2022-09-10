@@ -10,7 +10,9 @@ php-fpm -D
 
 composer install
 composer require laravel/passport
+composer require laravel-admin-ext/log-viewer -vvv
 
+php artisan admin:import log-viewer
 php artisan migrate
 php artisan key:generate
 php artisan cache:clear

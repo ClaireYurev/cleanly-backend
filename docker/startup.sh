@@ -19,6 +19,8 @@ composer dump-autoload
 php artisan optimize
 php artisan passport:install
 php artisan passport:keys
+
+# two new ones
 php artisan storage:link
 php artisan serve
 

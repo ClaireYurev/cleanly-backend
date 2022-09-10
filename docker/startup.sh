@@ -20,5 +20,6 @@ php artisan optimize
 php artisan passport:install
 php artisan passport:keys
 php artisan storage:link
+php artisan serve
 
 nginx

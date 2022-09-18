@@ -12,7 +12,25 @@ use Illuminate\Support\Facades\Validator;
 
 
 class CustomerAuthController extends Controller
-{
+{   
+    /* スピードハンターズ  NEW FUNCTION BELOW - UNTESTED YET *CY*/
+    public function update_cm_firebase_token(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'cm_firebase_token' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => "Validator failed with the provided token"], 403);
+        }
+
+        DB::table('users')->where('id', $request->user()->id)->update([
+            'remember_token' => $request['cm_firebase_token'],
+        ]);
+
+        return response()->json(['message' => "Laravel: CM Firebase Token Updated"], 200);
+        
+    }
     
      public function login(Request $request)
     {

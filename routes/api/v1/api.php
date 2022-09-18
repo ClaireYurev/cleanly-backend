@@ -22,6 +22,7 @@ Route::group(['namespace' => 'Api\V1'], function () {
     }); 
         Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
         Route::post('register', 'CustomerAuthController@register');
+        Route::put('cm-firebase-token', 'CustomerAuthController@update_cm_firebase_token');
         Route::post('login', 'CustomerAuthController@login');
         });
    
@@ -31,7 +32,7 @@ Route::group(['namespace' => 'Api\V1'], function () {
             Route::get('info', 'CustomerController@info');
             Route::post('update-profile', 'CustomerController@update_profile');
             Route::post('update-interest', 'CustomerController@update_interest');
-            Route::put('cm-firebase-token', 'CustomerController@update_cm_firebase_token');
+            /*Route::put('cm-firebase-token', 'CustomerController@update_cm_firebase_token');*/
             Route::get('suggested-foods', 'CustomerController@get_suggested_food');
 
         Route::group(['prefix' => 'address'], function () {

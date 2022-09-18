@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class CustomerController extends Controller{
 
     /* スピードハンターズ  NEW FUNCTION BELOW - UNTESTED YET *CY*/
-    public function update_cm_firebase_token(Request $request)
+    /*public function update_cm_firebase_token(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'cm_firebase_token' => 'required',
@@ -27,7 +27,7 @@ class CustomerController extends Controller{
 
         return response()->json(['message' => "Laravel: CM Firebase Token Updated"], 200);
         
-    } 
+    }*/
     
     /* スピードハンターズ  ORIGINAL FUNCTION BELOW *CY*/ 
     public function info(Request $request)
